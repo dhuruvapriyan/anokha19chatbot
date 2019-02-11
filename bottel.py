@@ -10,6 +10,7 @@ import sys
 from telepot.loop import MessageLoop
 from bottle import static_file
 import json
+from ast import literal_eval
 
 
 logging.basicConfig(level=logging.INFO)
@@ -98,7 +99,7 @@ def api():
         return dict(data=resp)
         
     msg = msg.strip()
-    
+    msg=literal_eval("'%s'" % msg)
     if len(msg) == 0:
         reply = 'Am I a joke to you -_-'
 
